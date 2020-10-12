@@ -5,13 +5,13 @@
     
     -->
   <form #loginForm="ngForm" class="form">
-    <label>
+    <label for="username">
       Username:
       <input [(ngModel)]="user.username" type="text" name="username" id="username" placeholder="Please enter username"
         class="input" />
     </label>
 
-    <label>
+    <label for="password">
       Password:
       <input [(ngModel)]="user.password" type="password" name="password" id="password"
         placeholder="Please enter password" class="input" />

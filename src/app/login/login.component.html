@@ -2,9 +2,10 @@
 
   <!-- Local variable: loginForm 
         -assigning it the value of ngForm => NgForm is a directive instance that governs the form as a whole
-    
     -->
-  <form #loginForm="ngForm" class="form">
+  <!-- ngSubmit event binding  -->
+
+  <form (ngSubmit)="onSubmit()" #loginForm="ngForm" class="form">
     <label for="username">
       Username:
       <input [(ngModel)]="user.username" type="text" name="username" id="username" placeholder="Please enter username"
@@ -17,6 +18,9 @@
         placeholder="Please enter password" class="input" />
     </label>
 
-    <button class="button">Log In</button>
+    <!-- If form not valid then it wont submit 
+        -> using the local variable loginForm as it governs whole form
+    -->
+    <button type="submit" class="button" [disabled]="!loginForm.form.valid">Log In</button>
   </form>
 </div>

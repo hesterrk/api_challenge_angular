@@ -1,0 +1,22 @@
+<div class="container">
+
+  <!-- Local variable: loginForm 
+        -assigning it the value of ngForm => NgForm is a directive instance that governs the form as a whole
+    
+    -->
+  <form #loginForm="ngForm" class="form">
+    <label>
+      Username:
+      <input [(ngModel)]="user.username" type="text" name="username" id="username" placeholder="Please enter username"
+        class="input" />
+    </label>
+
+    <label>
+      Password:
+      <input [(ngModel)]="user.password" type="password" name="password" id="password"
+        placeholder="Please enter password" class="input" />
+    </label>
+
+    <button class="button">Log In</button>
+  </form>
+</div>

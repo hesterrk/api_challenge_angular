@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from './user';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-login',
@@ -10,11 +11,12 @@ export class LoginComponent implements OnInit {
   // Created an instance of user (object)
   user = new User('', '');
 
-  constructor() {}
+  constructor(private authService: AuthService) {}
 
   ngOnInit(): void {}
 
   onSubmit() {
     console.log('submit ');
+    this.authService.postUser(this.user).subscribe(res => console.log(res))
   }
 }

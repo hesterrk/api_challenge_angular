@@ -11,12 +11,16 @@ export class ResultListComponent implements OnInit {
   @ViewChild('agGrid')
   agGrid: AgGridAngular;
 
+  // private portfolio;
+
   defaultColDef = {
     sortable: true,
     filter: true,
   };
 
   // Cell customisation is done a the column level via the column definition
+  //TODO => custom cell renderers, cel icon or colour change
+
   columnDefs = [
     { field: 'SiteName' },
     { field: 'ProjectName' },
@@ -47,7 +51,14 @@ export class ResultListComponent implements OnInit {
 
   constructor(private portfolioService: PortfolioService) {}
 
-  ngOnInit(): void {}
-}
+  // Call get portfolio method in here to display data when user lands on this component
+  ngOnInit(): void {
+    this.getPortfolio();
+  }
 
-//custom cell renderers, cel icon or colour change
+  getPortfolio(): void {
+    this.portfolioService
+      .getPortfolio()
+      .subscribe((res) => console.log(res));
+  }
+}

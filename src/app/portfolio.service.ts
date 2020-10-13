@@ -1,8 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-  HttpClient,
-  HttpHeaders,
-} from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 
@@ -26,7 +23,7 @@ export class PortfolioService {
 
   getPortfolio(): Observable<any> {
     return this.http
-      .get<any>(this.portfolioURL)
+      .get<any>(this.portfolioURL, this.httpOptions)
       .pipe(catchError(this.handleError<any>('getPortfolio', [])));
   }
 

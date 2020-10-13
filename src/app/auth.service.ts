@@ -7,7 +7,6 @@ import {
 import { User } from './login/user';
 import { Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
-import { AuthResponseData } from './login/token';
 
 @Injectable({
   providedIn: 'root',

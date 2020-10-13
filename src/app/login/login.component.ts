@@ -19,7 +19,11 @@ export class LoginComponent implements OnInit {
   onSubmit() {
     console.log('submit ');
     // TOKEN AUTH HERE: save token to local storage
-    this.authService.postUser(this.user).subscribe((res) => console.log(res));
-    this.router.navigate(['/resultslist']);
+    this.authService
+      .postUser(this.user)
+      .subscribe((res) =>
+        localStorage.setItem('token', JSON.stringify(res.Result.auth.token))
+      );
+    // this.router.navigate(['/resultslist']);
   }
 }

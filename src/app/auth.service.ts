@@ -7,6 +7,7 @@ import {
 import { User } from './login/user';
 import { Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
+import { AuthResponseData } from './login/token';
 
 @Injectable({
   providedIn: 'root',
@@ -24,7 +25,7 @@ export class AuthService {
 
   constructor(private http: HttpClient) {}
 
-  postUser(user: User): Observable<User> {
+  postUser(user: User): Observable<any>{
     return this.http
       .post<User>(this.usersURL, user, this.httpOptions)
       .pipe(catchError(this.handleError));

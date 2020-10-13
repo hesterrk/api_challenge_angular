@@ -31,10 +31,8 @@ export class AuthService {
       .pipe(catchError(this.handleError));
   }
 
-  private handleError(err: HttpErrorResponse | any) {
+  private handleError(err: HttpErrorResponse | any): Observable<any> {
     console.error('An error occurred', err);
     return throwError(err.message || err);
   }
 }
-
-

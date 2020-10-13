@@ -12,14 +12,11 @@ export class LoginComponent implements OnInit {
   // Created an instance of user (object)
   user = new User('', '');
 
-  constructor(
-    private authService: AuthService,
-    private router: Router
-  ) {}
+  constructor(private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {}
 
-  onSubmit() {
+  onSubmit(): void {
     console.log('submit ');
     this.authService
       .postUser(this.user)

@@ -19,8 +19,8 @@ export class ResultListComponent implements OnInit {
   rowData = [
     { SiteName: 'site1', ProjectName: 'proj1', DocumentName: 'doc1' },
     { SiteName: 'site2', ProjectName: 'proj2', DocumentName: 'doc2' },
-    { SiteName: 'site3', ProjectName: 'proj3', DocumentName: 'doc3' },
-  ];
+    { SiteName: 'site3', ProjectName: 'proj3', DocumentName: 'doc3' }
+];
 
   constructor() {}
 

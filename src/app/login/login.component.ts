@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from './user';
 import { AuthService } from '../auth.service';
-import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 
 @Component({
@@ -15,7 +14,6 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private location: Location,
     private router: Router
   ) {}
 
@@ -23,7 +21,6 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
     console.log('submit ');
-    // TOKEN AUTH HERE: save token to local storage
     this.authService
       .postUser(this.user)
       .subscribe((res) =>

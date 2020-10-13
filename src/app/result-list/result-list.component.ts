@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { AgGridAngular } from 'ag-grid-angular';
+import { PortfolioService } from '../portfolio.service';
 
 @Component({
   selector: 'app-result-list',
@@ -44,7 +45,7 @@ export class ResultListComponent implements OnInit {
     },
   ];
 
-  constructor() {}
+  constructor(private portfolioService: PortfolioService) {}
 
   ngOnInit(): void {}
 }

@@ -25,7 +25,7 @@ export class AuthService {
 
   constructor(private http: HttpClient) {}
 
-  postUser(user: User): Observable<any>{
+  postUser(user: User): Observable<any> {
     return this.http
       .post<User>(this.usersURL, user, this.httpOptions)
       .pipe(catchError(this.handleError));

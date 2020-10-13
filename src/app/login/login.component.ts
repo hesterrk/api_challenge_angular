@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from './user';
 import { AuthService } from '../auth.service';
 import { Location } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,11 @@ export class LoginComponent implements OnInit {
   // Created an instance of user (object)
   user = new User('', '');
 
-  constructor(private authService: AuthService, private location: Location) {}
+  constructor(
+    private authService: AuthService,
+    private location: Location,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {}
 
@@ -24,6 +29,6 @@ export class LoginComponent implements OnInit {
       .subscribe((res) =>
         localStorage.setItem('token', JSON.stringify(res.Result.auth.token))
       );
-    // this.router.navigate(['/resultslist']);
+    this.router.navigate(['/resultslist']);
   }
 }

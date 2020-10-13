@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ResultListComponent } from './result-list/result-list.component';
 
 import { AgGridModule } from 'ag-grid-angular';
+import 'ag-grid-enterprise';
 
 @NgModule({
   declarations: [AppComponent, LoginComponent, ResultListComponent],

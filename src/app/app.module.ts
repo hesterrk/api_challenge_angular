@@ -9,9 +9,17 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { ResultListComponent } from './result-list/result-list.component';
 
+import { AgGridModule } from 'ag-grid-angular';
+
 @NgModule({
   declarations: [AppComponent, LoginComponent, ResultListComponent],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    AgGridModule.withComponents([]),
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

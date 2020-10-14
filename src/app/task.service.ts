@@ -26,7 +26,7 @@ export class TaskService {
       .pipe(catchError(this.handleError<any>('getTask', [])));
   }
 
-  private handleError<T>(operation = 'operation', result: T) {
+  private handleError<T>(operation = 'operation', result: T): any {
     return (error: any): Observable<T> => {
       console.error(error, operation);
 

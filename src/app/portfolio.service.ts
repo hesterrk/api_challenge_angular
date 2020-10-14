@@ -27,7 +27,7 @@ export class PortfolioService {
       .pipe(catchError(this.handleError<any>('getPortfolio', [])));
   }
 
-  private handleError<T>(operation = 'operation', result: T) {
+  private handleError<T>(operation = 'operation', result: T): any {
     return (error: any): Observable<T> => {
       console.error(error, operation);
 

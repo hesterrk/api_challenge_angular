@@ -20,6 +20,10 @@ export class ResultListComponent implements OnInit {
     filter: true,
   };
 
+  siteSearchResult: string;
+  projectSearchResult: string;
+  documentSearchResult: string;
+
   // Cell customisation is done a the column level via the column definition
   // TODO => custom cell renderers, cel icon or colour change
 
@@ -29,10 +33,6 @@ export class ResultListComponent implements OnInit {
     { field: 'DocumentName' },
     {
       field: 'TaskCount',
-      // cellClassRules: {
-      //   green: 'x > 4',
-      //   red: 'x < 4',
-      // },
     },
   ];
 
@@ -41,12 +41,6 @@ export class ResultListComponent implements OnInit {
       SiteName: 'site1',
       ProjectName: 'proj1',
       DocumentName: 'doc1',
-      TaskCount: 3,
-    },
-    {
-      SiteName: 'site2',
-      ProjectName: 'proj2',
-      DocumentName: 'doc2',
       TaskCount: 10,
     },
   ];
@@ -61,15 +55,31 @@ export class ResultListComponent implements OnInit {
     this.getTask();
   }
 
-  getPortfolio(): void {
-    this.portfolioService
-      .getPortfolio()
-      .subscribe((res) => (this.portfolio = res.Result));
+  private getPortfolio(): void {
+    this.portfolioService.getPortfolio().subscribe((res) => {
+      this.portfolio = res.Result;
+    });
   }
 
-  getTask(): void {
+  private getTask(): void {
     this.taskService
       .getTask()
       .subscribe((res) => (this.task = res.Result.tasks.length));
+  }
+
+  searchPortfolio(term: string): void {
+    this.portfolioService.getPortfolio().subscribe((res) => {
+      this.siteSearchResult = res.Result.sites.filter((site) =>
+        site.name.includes(term)
+      );
+
+      this.projectSearchResult = res.Result.sites[0].projects.filter(
+        (project) => project.name.includes(term)
+      );
+
+      this.documentSearchResult = res.Result.sites[0].projects[0].documents.filter(
+        (document) => document.name.includes(term)
+      );
+    });
   }
 }

@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { AgGridAngular } from 'ag-grid-angular';
 import { PortfolioService } from '../portfolio.service';
 import { TaskService } from '../task.service';
+import { CustomisedCellComponent } from '../customised-cell/customised-cell.component';
 
 @Component({
   selector: 'app-result-list',
@@ -14,6 +15,8 @@ export class ResultListComponent implements OnInit {
 
   portfolio: any;
   task: number;
+  private frameworkComponents;
+  private columnDefs;
 
   defaultColDef = {
     sortable: true,
@@ -26,15 +29,6 @@ export class ResultListComponent implements OnInit {
 
   // Cell customisation is done a the column level via the column definition
   // TODO => custom cell renderers, cel icon or colour change
-
-  columnDefs = [
-    { field: 'SiteName' },
-    { field: 'ProjectName' },
-    { field: 'DocumentName' },
-    {
-      field: 'TaskCount',
-    },
-  ];
 
   rowData = [
     {
@@ -51,6 +45,19 @@ export class ResultListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.columnDefs = [
+      { field: 'SiteName' },
+      { field: 'ProjectName' },
+      { field: 'DocumentName' },
+      {
+        field: 'TaskCount',
+        cellRenderer: 'customizedTaskCell',
+      },
+    ];
+    this.frameworkComponents = {
+      customisedTaskCell: CustomisedCellComponent,
+    };
+
     this.getPortfolio();
     this.getTask();
   }

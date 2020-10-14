@@ -11,15 +11,21 @@ import { ResultListComponent } from './result-list/result-list.component';
 
 import { AgGridModule } from 'ag-grid-angular';
 import 'ag-grid-enterprise';
+import { CustomisedCellComponent } from './customised-cell/customised-cell.component';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, ResultListComponent],
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    ResultListComponent,
+    CustomisedCellComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    AgGridModule.withComponents([]),
+    AgGridModule.withComponents([CustomisedCellComponent]),
   ],
   providers: [],
   bootstrap: [AppComponent],

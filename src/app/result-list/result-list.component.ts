@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { AgGridAngular } from 'ag-grid-angular';
 import { PortfolioService } from '../portfolio.service';
+import { TaskService } from '../task.service';
 
 @Component({
   selector: 'app-result-list',
@@ -12,6 +13,7 @@ export class ResultListComponent implements OnInit {
   agGrid: AgGridAngular;
 
   portfolio: any;
+  task: any;
 
   defaultColDef = {
     sortable: true,
@@ -49,15 +51,23 @@ export class ResultListComponent implements OnInit {
     },
   ];
 
-  constructor(private portfolioService: PortfolioService) {}
+  constructor(
+    private portfolioService: PortfolioService,
+    private taskService: TaskService
+  ) {}
 
   ngOnInit(): void {
     this.getPortfolio();
+    this.getTask();
   }
 
   getPortfolio(): void {
     this.portfolioService
       .getPortfolio()
       .subscribe((res) => (this.portfolio = res.Result));
+  }
+
+  getTask(): void {
+    this.taskService.getTask().subscribe((res) => (this.task = res.Result));
   }
 }

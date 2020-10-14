@@ -13,10 +13,15 @@
 
 <h2>My Results</h2>
 
-<ng-container *ngFor="let p of portfolio?.sites">
-  <p><b>Site Name</b> : {{ p.name }}</p>
+<ng-container *ngFor="let s of portfolio?.sites">
+  <p><b>Site Name</b> : {{ s.name }}</p>
 </ng-container>
 
 <ng-container *ngFor="let p of portfolio?.sites[0].projects">
   <p><b>Project Name</b> : {{ p.name }}</p>
+</ng-container>
+
+<h5>Documents:</h5>
+<ng-container *ngFor="let d of portfolio?.sites[0].projects[0].documents">
+  <p><b>Document </b> : {{ d.name }}</p>
 </ng-container>

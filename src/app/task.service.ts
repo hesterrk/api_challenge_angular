@@ -6,11 +6,10 @@ import { catchError } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root',
 })
-export class PortfolioService {
+export class TaskService {
   private token = localStorage.getItem('token');
 
-  private portfolioURL =
-    'https://edocsapi.azurewebsites.net/Core6/api/Portfolio/ByUserId';
+  private taskURL = 'https://edocsapi.azurewebsites.net/Core6/api/Tasks/ByUser';
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -21,17 +20,16 @@ export class PortfolioService {
 
   constructor(private http: HttpClient) {}
 
-  getPortfolio(): Observable<any> {
+  getTask(): Observable<any> {
     return this.http
-      .get<any>(this.portfolioURL, this.httpOptions)
-      .pipe(catchError(this.handleError<any>('getPortfolio', [])));
+      .get<any>(this.taskURL, this.httpOptions)
+      .pipe(catchError(this.handleError<any>('getTask', [])));
   }
 
   private handleError<T>(operation = 'operation', result: T) {
     return (error: any): Observable<T> => {
       console.error(error, operation);
 
-      // Let the app keep running by returning a safe empty result
       return of(result as T);
     };
   }

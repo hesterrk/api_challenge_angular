@@ -11,7 +11,7 @@ export class ResultListComponent implements OnInit {
   @ViewChild('agGrid')
   agGrid: AgGridAngular;
 
-  // private portfolio;
+  portfolio: any;
 
   defaultColDef = {
     sortable: true,
@@ -51,7 +51,6 @@ export class ResultListComponent implements OnInit {
 
   constructor(private portfolioService: PortfolioService) {}
 
-  // Call get portfolio method in here to display data when user lands on this component
   ngOnInit(): void {
     this.getPortfolio();
   }
@@ -59,6 +58,6 @@ export class ResultListComponent implements OnInit {
   getPortfolio(): void {
     this.portfolioService
       .getPortfolio()
-      .subscribe((res) => console.log(res));
+      .subscribe((res) => (this.portfolio = res.Result));
   }
 }

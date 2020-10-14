@@ -13,7 +13,7 @@ export class ResultListComponent implements OnInit {
   agGrid: AgGridAngular;
 
   portfolio: any;
-  task: any;
+  task: number;
 
   defaultColDef = {
     sortable: true,
@@ -68,6 +68,8 @@ export class ResultListComponent implements OnInit {
   }
 
   getTask(): void {
-    this.taskService.getTask().subscribe((res) => (this.task = res.Result));
+    this.taskService
+      .getTask()
+      .subscribe((res) => (this.task = res.Result.tasks.length));
   }
 }

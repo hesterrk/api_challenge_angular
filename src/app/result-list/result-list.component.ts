@@ -21,7 +21,7 @@ export class ResultListComponent implements OnInit {
   };
 
   // Cell customisation is done a the column level via the column definition
-  //TODO => custom cell renderers, cel icon or colour change
+  // TODO => custom cell renderers, cel icon or colour change
 
   columnDefs = [
     { field: 'SiteName' },

@@ -11,14 +11,13 @@ import { ICellRendererAngularComp } from 'ag-grid-angular';
 // 1. new is called on this class instance
 // 2. agInit() called once
 // 3. refresh() called? -> may never be called, or called multiple times
-  
 export class ActioncustomComponent implements OnInit, ICellRendererAngularComp {
   params: any;
   constructor() {}
 
   ngOnInit(): void {}
 
-  agInit(params: any) {
+  agInit(params: any): void {
     this.params = params;
   }
 

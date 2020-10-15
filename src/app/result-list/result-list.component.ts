@@ -52,8 +52,8 @@ export class ResultListComponent implements OnInit {
 
   // cellRenderer: customises the contents inside cell -> do this via just plain JS component or a framework component (using Angular)
   // cellRendererFramework: customises contents inside cell -> refering to an Angular (framework) component that we are making custom
-  //Default cellRender is just text we inject into that row, so using cellRenderer or cellRendererFramework allows us to custom the contents inside a particular cell
-  
+  // Default cellRender is just text we inject into that row, so using cellRenderer or cellRendererFramework allows us to custom the contents inside a particular cell
+
   ngOnInit(): void {
     this.columnDefs = [
       { field: 'SiteName' },

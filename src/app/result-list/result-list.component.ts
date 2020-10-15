@@ -85,9 +85,6 @@ export class ResultListComponent implements OnInit {
 			.subscribe((res) => (this.task = res.Result.tasks.length));
 	}
 
-	// CHANGE TO THIS.PORTFOLIO instead o calling again
-	//Name public stuff aka variables !!!!
-
 	public searchPortfolio(term: string): void {
 		this.siteSearchResult = this.portfolio.sites.filter((site) =>
 			site.name.includes(term)

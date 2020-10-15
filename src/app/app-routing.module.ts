@@ -4,13 +4,13 @@ import { LoginComponent } from './login/login.component';
 import { ResultListComponent } from './result-list/result-list.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: 'login', component: LoginComponent },
-  { path: 'resultslist', component: ResultListComponent },
+	{ path: '', redirectTo: '/login', pathMatch: 'full' },
+	{ path: 'login', component: LoginComponent },
+	{ path: 'resultslist', component: ResultListComponent },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
+	imports: [RouterModule.forRoot(routes)],
+	exports: [RouterModule],
 })
 export class AppRoutingModule {}

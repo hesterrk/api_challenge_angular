@@ -15,25 +15,25 @@ import { CustomisedCellComponent } from './customised-cell/customised-cell.compo
 import { ActioncustomComponent } from './actioncustom/actioncustom.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LoginComponent,
-    ResultListComponent,
-    CustomisedCellComponent,
-    ActioncustomComponent,
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    HttpClientModule,
-    AgGridModule.withComponents([
-      CustomisedCellComponent,
-      ActioncustomComponent,
-    ]),
-  ],
-  providers: [],
+	declarations: [
+		AppComponent,
+		LoginComponent,
+		ResultListComponent,
+		CustomisedCellComponent,
+		ActioncustomComponent,
+	],
+	imports: [
+		BrowserModule,
+		AppRoutingModule,
+		FormsModule,
+		HttpClientModule,
+		AgGridModule.withComponents([
+			CustomisedCellComponent,
+			ActioncustomComponent,
+		]),
+	],
+	providers: [],
 
-  bootstrap: [AppComponent],
+	bootstrap: [AppComponent],
 })
 export class AppModule {}

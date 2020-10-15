@@ -28,28 +28,24 @@ export class ResultListComponent implements OnInit {
 	public projectSearchResult: string;
 	public documentSearchResult: string;
 
-	// Cell customisation is done a the column level via the column definition
-	// TODO => custom cell renderers, cel icon or colour change
-
 	public rowData = [
 		{
 			SiteName: 'site1',
 			ProjectName: 'proj1',
 			DocumentName: 'doc1',
-			TaskCount: 10,
+			TaskCount: 9.55,
 		},
 		{
 			SiteName: 'site2',
 			ProjectName: 'proj2',
 			DocumentName: 'doc2',
-			TaskCount: 2,
+			TaskCount: 2.134,
 		},
 	];
 
 	constructor(
 		private portfolioService: PortfolioService,
-		private taskService: TaskService,
-
+		private taskService: TaskService
 	) {
 		this.searchPortfolio = _.debounce(this.searchPortfolio, 1000);
 	}
@@ -62,7 +58,10 @@ export class ResultListComponent implements OnInit {
 		this.columnDefs = [
 			{ field: 'SiteName' },
 			{ field: 'ProjectName' },
-			{ field: 'DocumentName' },
+			{
+				field: 'DocumentName',
+				valueFormatter: (params) => params.value.toUpperCase(),
+			},
 			{
 				field: 'TaskCount',
 				cellRendererFramework: CustomisedCellComponent,
@@ -91,16 +90,15 @@ export class ResultListComponent implements OnInit {
 
 	public searchPortfolio(term: string): void {
 		this.siteSearchResult = this.portfolio.sites.filter((site) =>
-			site.name.includes(term)
+			site.name.toLowerCase().includes(term.toLowerCase())
 		);
 
 		this.projectSearchResult = this.portfolio.sites[0].projects.filter(
-			(project) => project.name.includes(term)
+			(project) => project.name.toLowerCase().includes(term.toLowerCase())
 		);
 
 		this.documentSearchResult = this.portfolio.sites[0].projects[0].documents.filter(
-			(document) => document.name.includes(term)
+			(document) => document.name.toLowerCase().includes(term.toLowerCase())
 		);
 	}
-
 }

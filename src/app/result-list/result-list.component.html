@@ -5,22 +5,23 @@
 </ag-grid-angular>
 
 <h2>My Results</h2>
+<div class="container">
+  <ng-container *ngFor="let s of portfolio?.sites">
+    <p><b>Site Name</b> : {{ s.name }}</p>
+  </ng-container>
 
-<ng-container *ngFor="let s of portfolio?.sites">
-  <p><b>Site Name</b> : {{ s.name }}</p>
-</ng-container>
+  <ng-container *ngFor="let p of portfolio?.sites[0].projects">
+    <p><b>Project Name</b> : {{ p.name }}</p>
+  </ng-container>
 
-<ng-container *ngFor="let p of portfolio?.sites[0].projects">
-  <p><b>Project Name</b> : {{ p.name }}</p>
-</ng-container>
+  <h3>Documents:</h3>
+  <ng-container *ngFor="let d of portfolio?.sites[0].projects[0].documents">
+    <p><b>Document </b> : {{ d.name }}</p>
+  </ng-container>
 
-<h3>Documents:</h3>
-<ng-container *ngFor="let d of portfolio?.sites[0].projects[0].documents">
-  <p><b>Document </b> : {{ d.name }}</p>
-</ng-container>
-
-<div>
-  <p><b>Task Count </b> : {{task }}</p>
+  <div>
+    <p><b>Task Count </b> : {{task }}</p>
+  </div>
 </div>
 
 <h3> Search Results: </h3>

@@ -25,4 +25,8 @@ export class ActioncustomComponent implements OnInit, ICellRendererAngularComp {
     this.params = params.value;
     return true;
   }
+
+  onClickMe(): void {
+    alert('Clicked');
+  }
 }

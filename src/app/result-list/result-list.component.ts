@@ -6,98 +6,101 @@ import { CustomisedCellComponent } from '../customised-cell/customised-cell.comp
 import { ActioncustomComponent } from '../actioncustom/actioncustom.component';
 
 @Component({
-  selector: 'app-result-list',
-  templateUrl: './result-list.component.html',
-  styleUrls: ['./result-list.component.css'],
+	selector: 'app-result-list',
+	templateUrl: './result-list.component.html',
+	styleUrls: ['./result-list.component.css'],
 })
 export class ResultListComponent implements OnInit {
-  @ViewChild('agGrid')
-  agGrid: AgGridAngular;
+	@ViewChild('agGrid')
+	public agGrid: AgGridAngular;
 
-  portfolio: any;
-  task: number;
-  private columnDefs;
+	public portfolio: any;
+	public task: number;
+	public columnDefs;
 
-  defaultColDef = {
-    sortable: true,
-    filter: true,
-  };
+	public defaultColDef = {
+		sortable: true,
+		filter: true,
+	};
 
-  siteSearchResult: string;
-  projectSearchResult: string;
-  documentSearchResult: string;
+	public siteSearchResult: string;
+	public projectSearchResult: string;
+	public documentSearchResult: string;
 
-  // Cell customisation is done a the column level via the column definition
-  // TODO => custom cell renderers, cel icon or colour change
+	// Cell customisation is done a the column level via the column definition
+	// TODO => custom cell renderers, cel icon or colour change
 
-  rowData = [
-    {
-      SiteName: 'site1',
-      ProjectName: 'proj1',
-      DocumentName: 'doc1',
-      TaskCount: 10,
-    },
-    {
-      SiteName: 'site2',
-      ProjectName: 'proj2',
-      DocumentName: 'doc2',
-      TaskCount: 2,
-    },
-  ];
+	public rowData = [
+		{
+			SiteName: 'site1',
+			ProjectName: 'proj1',
+			DocumentName: 'doc1',
+			TaskCount: 10,
+		},
+		{
+			SiteName: 'site2',
+			ProjectName: 'proj2',
+			DocumentName: 'doc2',
+			TaskCount: 2,
+		},
+	];
 
-  constructor(
-    private portfolioService: PortfolioService,
-    private taskService: TaskService
-  ) {}
+	constructor(
+		private portfolioService: PortfolioService,
+		private taskService: TaskService
+	) {}
 
-  // cellRenderer: customises the contents inside cell -> do this via just plain JS component or a framework component (using Angular)
-  // cellRendererFramework: customises contents inside cell -> refering to an Angular (framework) component that we are making custom
-  // Default cellRender is just text we inject into that row, so using cellRenderer or cellRendererFramework allows us to custom the contents inside a particular cell
+	// cellRenderer: customises the contents inside cell -> do this via just plain JS component or a framework component (using Angular)
+	// cellRendererFramework: customises contents inside cell -> refering to an Angular (framework) component that we are making custom
+	// Default cellRender is just text we inject into that row, so using cellRenderer or cellRendererFramework allows us to custom the contents inside a particular cell
 
-  ngOnInit(): void {
-    this.columnDefs = [
-      { field: 'SiteName' },
-      { field: 'ProjectName' },
-      { field: 'DocumentName' },
-      {
-        field: 'TaskCount',
-        cellRendererFramework: CustomisedCellComponent,
-      },
-      {
-        field: 'Actions',
-        cellRendererFramework: ActioncustomComponent,
-      },
-    ];
+	ngOnInit(): void {
+		this.columnDefs = [
+			{ field: 'SiteName' },
+			{ field: 'ProjectName' },
+			{ field: 'DocumentName' },
+			{
+				field: 'TaskCount',
+				cellRendererFramework: CustomisedCellComponent,
+			},
+			{
+				field: 'Actions',
+				cellRendererFramework: ActioncustomComponent,
+			},
+		];
 
-    this.getPortfolio();
-    this.getTask();
-  }
+		this.getPortfolio();
+		this.getTask();
+	}
 
-  private getPortfolio(): void {
-    this.portfolioService.getPortfolio().subscribe((res) => {
-      this.portfolio = res.Result;
-    });
-  }
+	private getPortfolio(): void {
+		this.portfolioService.getPortfolio().subscribe((res) => {
+			this.portfolio = res.Result;
+		});
+	}
 
-  private getTask(): void {
-    this.taskService
-      .getTask()
-      .subscribe((res) => (this.task = res.Result.tasks.length));
-  }
+	private getTask(): void {
+		this.taskService
+			.getTask()
+			.subscribe((res) => (this.task = res.Result.tasks.length));
+	}
 
-  searchPortfolio(term: string): void {
-    this.portfolioService.getPortfolio().subscribe((res) => {
-      this.siteSearchResult = res.Result.sites.filter((site) =>
-        site.name.includes(term)
-      );
+	// CHANGE TO THIS.PORTFOLIO instead o calling again
+	//Name public stuff aka variables !!!!
 
-      this.projectSearchResult = res.Result.sites[0].projects.filter(
-        (project) => project.name.includes(term)
-      );
+	searchPortfolio(term: string): void {
+		this.portfolioService.getPortfolio().subscribe((res) => {
+			this.siteSearchResult = res.Result.sites.filter((site) =>
+				site.name.includes(term)
+			);
 
-      this.documentSearchResult = res.Result.sites[0].projects[0].documents.filter(
-        (document) => document.name.includes(term)
-      );
-    });
-  }
+			this.projectSearchResult = res.Result.sites[0].projects.filter(
+				(project) => project.name.includes(term)
+			);
+
+			this.documentSearchResult = res.Result.sites[0].projects[0].documents.filter(
+				(document) => document.name.includes(term)
+			);
+		});
+	}
 }

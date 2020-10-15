@@ -8,7 +8,7 @@ import { ICellRendererAngularComp } from 'ag-grid-angular';
 })
 
 // Specific component targets the TaskCount row data cells: 10 and 2
-// ICellRendererAngularComp -> ag-grid defined interface (an instance of the interface) => serves as bridge between Angualr and AG-grid
+// ICellRendererAngularComp -> ag-grid defined interface (an instance of the interface) => serves as bridge between Angualar component and AG-grid
 export class CustomisedCellComponent
   implements OnInit, ICellRendererAngularComp {
   cellValue: any;

@@ -28,5 +28,6 @@ export class ActioncustomComponent implements OnInit, ICellRendererAngularComp {
 
   onClickMe(): void {
     alert('Clicked');
+    
   }
 }

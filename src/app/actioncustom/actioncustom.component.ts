@@ -6,6 +6,12 @@ import { ICellRendererAngularComp } from 'ag-grid-angular';
   templateUrl: './actioncustom.component.html',
   styleUrls: ['./actioncustom.component.css'],
 })
+
+// Lifecycle of this cell renderer angular component:
+// 1. new is called on this class instance
+// 2. agInit() called once
+// 3. refresh() called? -> may never be called, or called multiple times
+  
 export class ActioncustomComponent implements OnInit, ICellRendererAngularComp {
   params: any;
   constructor() {}

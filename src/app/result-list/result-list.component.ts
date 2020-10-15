@@ -88,19 +88,17 @@ export class ResultListComponent implements OnInit {
 	// CHANGE TO THIS.PORTFOLIO instead o calling again
 	//Name public stuff aka variables !!!!
 
-	searchPortfolio(term: string): void {
-		this.portfolioService.getPortfolio().subscribe((res) => {
-			this.siteSearchResult = res.Result.sites.filter((site) =>
-				site.name.includes(term)
-			);
+	public searchPortfolio(term: string): void {
+		this.siteSearchResult = this.portfolio.sites.filter((site) =>
+			site.name.includes(term)
+		);
 
-			this.projectSearchResult = res.Result.sites[0].projects.filter(
-				(project) => project.name.includes(term)
-			);
+		this.projectSearchResult = this.portfolio.sites[0].projects.filter(
+			(project) => project.name.includes(term)
+		);
 
-			this.documentSearchResult = res.Result.sites[0].projects[0].documents.filter(
-				(document) => document.name.includes(term)
-			);
-		});
+		this.documentSearchResult = this.portfolio.sites[0].projects[0].documents.filter(
+			(document) => document.name.includes(term)
+		);
 	}
 }

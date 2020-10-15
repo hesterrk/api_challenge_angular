@@ -4,6 +4,7 @@ import { PortfolioService } from '../portfolio.service';
 import { TaskService } from '../task.service';
 import { CustomisedCellComponent } from '../customised-cell/customised-cell.component';
 import { ActioncustomComponent } from '../actioncustom/actioncustom.component';
+import * as _ from 'underscore';
 
 @Component({
 	selector: 'app-result-list',
@@ -47,8 +48,11 @@ export class ResultListComponent implements OnInit {
 
 	constructor(
 		private portfolioService: PortfolioService,
-		private taskService: TaskService
-	) {}
+		private taskService: TaskService,
+
+	) {
+		this.searchPortfolio = _.debounce(this.searchPortfolio, 1000);
+	}
 
 	// cellRenderer: customises the contents inside cell -> do this via just plain JS component or a framework component (using Angular)
 	// cellRendererFramework: customises contents inside cell -> refering to an Angular (framework) component that we are making custom
@@ -98,4 +102,5 @@ export class ResultListComponent implements OnInit {
 			(document) => document.name.includes(term)
 		);
 	}
+
 }

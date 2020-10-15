@@ -12,6 +12,7 @@ import { ResultListComponent } from './result-list/result-list.component';
 import { AgGridModule } from 'ag-grid-angular';
 import 'ag-grid-enterprise';
 import { CustomisedCellComponent } from './customised-cell/customised-cell.component';
+import { ActioncustomComponent } from './actioncustom/actioncustom.component';
 
 @NgModule({
   declarations: [
@@ -19,15 +20,20 @@ import { CustomisedCellComponent } from './customised-cell/customised-cell.compo
     LoginComponent,
     ResultListComponent,
     CustomisedCellComponent,
+    ActioncustomComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    AgGridModule.withComponents([CustomisedCellComponent]),
+    AgGridModule.withComponents([
+      CustomisedCellComponent,
+      ActioncustomComponent,
+    ]),
   ],
   providers: [],
+
   bootstrap: [AppComponent],
 })
 export class AppModule {}

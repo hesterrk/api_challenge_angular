@@ -3,6 +3,7 @@ import { AgGridAngular } from 'ag-grid-angular';
 import { PortfolioService } from '../portfolio.service';
 import { TaskService } from '../task.service';
 import { CustomisedCellComponent } from '../customised-cell/customised-cell.component';
+import { ActioncustomComponent } from '../actioncustom/actioncustom.component';
 
 @Component({
   selector: 'app-result-list',
@@ -15,7 +16,6 @@ export class ResultListComponent implements OnInit {
 
   portfolio: any;
   task: number;
-  private frameworkComponents;
   private columnDefs;
 
   defaultColDef = {
@@ -37,6 +37,12 @@ export class ResultListComponent implements OnInit {
       DocumentName: 'doc1',
       TaskCount: 10,
     },
+    {
+      SiteName: 'site2',
+      ProjectName: 'proj2',
+      DocumentName: 'doc2',
+      TaskCount: 2,
+    },
   ];
 
   constructor(
@@ -44,6 +50,10 @@ export class ResultListComponent implements OnInit {
     private taskService: TaskService
   ) {}
 
+  // cellRenderer: customises the contents inside cell -> do this via just plain JS component or a framework component (using Angular)
+  // cellRendererFramework: customises contents inside cell -> refering to an Angular (framework) component that we are making custom
+  //Default cellRender is just text we inject into that row, so using cellRenderer or cellRendererFramework allows us to custom the contents inside a particular cell
+  
   ngOnInit(): void {
     this.columnDefs = [
       { field: 'SiteName' },
@@ -51,12 +61,13 @@ export class ResultListComponent implements OnInit {
       { field: 'DocumentName' },
       {
         field: 'TaskCount',
-        cellRenderer: 'customizedTaskCell',
+        cellRendererFramework: CustomisedCellComponent,
+      },
+      {
+        field: 'Actions',
+        cellRendererFramework: ActioncustomComponent,
       },
     ];
-    this.frameworkComponents = {
-      customisedTaskCell: CustomisedCellComponent,
-    };
 
     this.getPortfolio();
     this.getTask();

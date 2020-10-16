@@ -15,10 +15,7 @@ export class CustomisedCellComponent implements ICellRendererAngularComp {
 
 	// This method: called each time the cell is rendered
 	agInit(params: any): void {
-		// cellValue is 10 (row data input)
 		this.cellValue = params.value;
-		console.log(this.cellValue, 'cell value');
-		console.log(typeof this.cellValue, 'params');
 	}
 
 	// This method is called when the cell is refreshed

@@ -19,7 +19,7 @@ export class ResultListComponent implements OnInit {
   public agGrid: AgGridAngular;
 
   public portfolio: any;
-  public task: number;
+  public task: any;
   public columnDefs;
 
   public defaultColDef = {
@@ -53,11 +53,15 @@ export class ResultListComponent implements OnInit {
     },
   ];
 
+ 
+  public taskForDocument: any;
+
   constructor(
     private portfolioService: PortfolioService,
     private taskService: TaskService
   ) {
     this.searchPortfolio = _.debounce(this.searchPortfolio, 1000);
+    this.getTasksForDoc;
   }
 
   // cellRenderer: customises the contents inside cell -> do this via just plain JS component or a framework component (using Angular)
@@ -131,9 +135,7 @@ export class ResultListComponent implements OnInit {
   }
 
   private getTask(): void {
-    this.taskService
-      .getTask()
-      .subscribe((res) => (this.task = res.Result.tasks.length));
+    this.taskService.getTask().subscribe((res) => (this.task = res.Result));
   }
 
   public searchPortfolio(term: string): void {
@@ -150,5 +152,12 @@ export class ResultListComponent implements OnInit {
     );
   }
 
-  
+
+  // Show task for each document 
+  public getTasksForDoc(documentId: string): void {
+    const tasksDocumentId = this.task.tasks.map((t) => t.documentId);
+    this.taskForDocument = tasksDocumentId.filter((task) => {
+      return task === documentId;
+    });
+  }
 }

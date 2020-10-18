@@ -16,14 +16,16 @@
 
   <h3>Documents:</h3>
   <ng-container *ngFor="let d of portfolio?.sites[0].projects[0].documents">
-    <p (click)="getTasksForDoc(d.id)"><b>Document </b> : {{ d.name }} </p>
+    <p class="pointer" (click)="getTasksForDoc(d.id)"><b>Document </b> : {{ d.name }} </p>
   </ng-container>
-  <p> Document Task Count: {{taskForDocument?.length}}</p>
 
+  <p> <b>Task(s) Subject for Document: </b> {{showTaskSubject}} <p>
 
-  <div>
-    <p><b>Total Task Count across Documents </b> : {{task?.tasks.length}}</p>
-  </div>
+      <p> <b>Document Task Count: </b>{{taskForDocument?.length}}</p>
+
+      <div>
+        <p><b>Total Task Count across Documents </b> : {{task?.tasks.length}}</p>
+      </div>
 </div>
 
 

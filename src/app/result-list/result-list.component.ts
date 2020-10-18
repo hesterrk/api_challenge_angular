@@ -53,8 +53,8 @@ export class ResultListComponent implements OnInit {
     },
   ];
 
- 
   public taskForDocument: any;
+  public showTaskSubject: any;
 
   constructor(
     private portfolioService: PortfolioService,
@@ -152,12 +152,14 @@ export class ResultListComponent implements OnInit {
     );
   }
 
-
-  // Show task for each document 
+  // Show task for each document
   public getTasksForDoc(documentId: string): void {
-    const tasksDocumentId = this.task.tasks.map((t) => t.documentId);
-    this.taskForDocument = tasksDocumentId.filter((task) => {
-      return task === documentId;
+    const taskData = this.task.tasks.map((t) => t);
+    this.taskForDocument = taskData.filter((task) => {
+      return task.documentId === documentId;
+    });
+    this.showTaskSubject = this.taskForDocument.map((t) => {
+      return t.subject;
     });
   }
 }

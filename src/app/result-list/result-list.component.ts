@@ -31,6 +31,9 @@ export class ResultListComponent implements OnInit {
   public projectSearchResult: string;
   public documentSearchResult: string;
 
+  public documentsToDo: any;
+  // public documentForTaskSearchResult: any;
+
   public rowData = [
     {
       SiteName: 'site1',
@@ -150,6 +153,14 @@ export class ResultListComponent implements OnInit {
     this.documentSearchResult = this.portfolio.sites[0].projects[0].documents.filter(
       (document) => document.name.toLowerCase().includes(term.toLowerCase())
     );
+
+    // Todo -> type in and search for tasks and the associated document comes up (the document that has that task that you typed in)
+    
+    // Acces -> document id will be [0] and name will be [1]
+    const documentNameAndId = this.portfolio.sites[0].projects[0].documents.map((doc) => {
+      return Object.values(doc).slice(0, 2);
+    });
+    console.log(documentNameAndId);
   }
 
   // Show task for each document

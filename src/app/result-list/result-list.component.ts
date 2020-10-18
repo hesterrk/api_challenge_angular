@@ -31,7 +31,6 @@ export class ResultListComponent implements OnInit {
   public projectSearchResult: string;
   public documentSearchResult: string;
 
-  public documentsToDo: any;
   // public documentForTaskSearchResult: any;
 
   public rowData = [
@@ -155,12 +154,27 @@ export class ResultListComponent implements OnInit {
     );
 
     // Todo -> type in and search for tasks and the associated document comes up (the document that has that task that you typed in)
-    
-    // Acces -> document id will be [0] and name will be [1]
-    const documentNameAndId = this.portfolio.sites[0].projects[0].documents.map((doc) => {
-      return Object.values(doc).slice(0, 2);
-    });
+
+    // Access -> document id will be [0] and name will be [1]
+    // nested arrays in an array
+    const documentNameAndId = this.portfolio.sites[0].projects[0].documents.map(
+      (doc) => {
+        return Object.values(doc).slice(0, 2);
+      }
+    );
     console.log(documentNameAndId);
+
+    //one array with strings of task.documentId
+    const taskDocumentId = this.task.tasks.map((t) => t.documentId);
+    // console.log(taskDocumentId);
+
+    // 1. where task.documentId's match with document's id
+    const taskMatchDocument = documentNameAndId.map((subArr) => {
+      return taskDocumentId.filter(t => { return t == subArr[0] })
+      
+    });
+
+    console.log(taskMatchDocument);
   }
 
   // Show task for each document

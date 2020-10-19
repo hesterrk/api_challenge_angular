@@ -31,7 +31,7 @@ export class ResultListComponent implements OnInit {
   public projectSearchResult: string;
   public documentSearchResult: string;
 
-  // public documentForTaskSearchResult: any;
+  public documentForTaskSearchResult: any;
 
   public rowData = [
     {
@@ -160,7 +160,7 @@ export class ResultListComponent implements OnInit {
       }
     );
     // console.log(documentNameAndId, 'doc name and id');
-    
+
     // Getting the documentId and subject properties out of task array of objects
     const subjectAndId = this.task.tasks.map(({ documentId, subject }) => {
       return { documentId, subject };
@@ -175,12 +175,18 @@ export class ResultListComponent implements OnInit {
     const showDocName = searchTask.map(({ documentId }) => {
       return documentNameAndId.map((doc) => {
         if (doc.id == documentId) {
-          return doc.name
+          return doc.name;
         }
       });
     });
-    console.log(showDocName);
+    // console.log(showDocName);
+
+    this.documentForTaskSearchResult = showDocName.filter(
+      (doc) => doc != undefined
+    );
+    console.log(this.documentForTaskSearchResult);
   }
+  
 
   // Show task for each document
   public getTasksForDoc(documentId: string): void {

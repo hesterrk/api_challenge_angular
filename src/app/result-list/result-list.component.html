@@ -35,7 +35,7 @@
   <h4>Documents for Site 1:</h4>
   <ng-container *ngIf="portfolioDocuments1">
     <div *ngFor="let d of portfolioDocuments1[0]">
-      <p class="pointer" [appHighlight]="color" (click)="getTasksForDoc(d.id)">
+      <p class="pointer" (click)="getTasksForDoc(d.id)">
         <b>Document </b> : {{ d.name }}
       </p>
     </div>

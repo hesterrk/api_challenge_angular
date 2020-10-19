@@ -180,7 +180,6 @@ export class ResultListComponent implements OnInit {
     this.documentSearchResult = joinDocumentArrays.filter((document) =>
       document.name.toLowerCase().includes(term.toLowerCase())
     );
-    console.log(this.documentSearchResult, 'check me');
 
     const documentNameAndId = this.portfolio.sites[1].projects[0].documents.map(
       ({ id, name }) => {

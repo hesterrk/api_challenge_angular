@@ -181,12 +181,13 @@ export class ResultListComponent implements OnInit {
     });
     // console.log(showDocName);
 
-    this.documentForTaskSearchResult = showDocName.filter(
-      (doc) => doc != undefined
+    this.documentForTaskSearchResult = showDocName.map((doc) =>
+      doc.filter((d) => {
+        return d !== undefined;
+      })
     );
     console.log(this.documentForTaskSearchResult);
   }
-  
 
   // Show task for each document
   public getTasksForDoc(documentId: string): void {

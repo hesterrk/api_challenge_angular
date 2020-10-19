@@ -169,7 +169,6 @@ export class ResultListComponent implements OnInit {
       return project[0].toLowerCase().includes(term.toLowerCase());
     });
 
-    // TODO -> search all documents from site 1 and site 2
     const allDocuments = this.portfolio.sites.map((site) => {
       return site.projects.map((proj) => {
         return proj.documents.map((doc) => doc);

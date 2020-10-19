@@ -1,9 +1,11 @@
-import { Directive, ElementRef, HostListener } from '@angular/core';
+import { Directive, ElementRef, HostListener, Input } from '@angular/core';
 
 @Directive({
   selector: '[appHighlight]',
 })
 export class HighlightDirective {
+  @Input('appHighlight') highlightColor: string;
+
   // elementRef refers to the host element that we apply this attribute directive too -> a wrapper
   // elementRef acts as a reference for the 'host DOM element' -> which is the elemene that this directive is applied too
   constructor(private el: ElementRef) {
@@ -15,7 +17,7 @@ export class HighlightDirective {
   // HostListener => lets you subscribe to events of the host DOM element (element that hosts the directive)
 
   @HostListener('mouseenter') onMouseEnter() {
-    this.highlight('#a8c0ff');
+    this.highlight(this.highlightColor);
   }
 
   @HostListener('mouseleave') onMouseLeave() {

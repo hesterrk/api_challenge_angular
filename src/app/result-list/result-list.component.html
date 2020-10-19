@@ -23,7 +23,7 @@
 
   <h3>Documents:</h3>
   <ng-container *ngFor="let d of portfolio?.sites[0].projects[0].documents">
-    <p class="pointer" appHighlight (click)="getTasksForDoc(d.id)">
+    <p class="pointer" [appHighlight]="color" (click)="getTasksForDoc(d.id)">
       <b>Document </b> : {{ d.name }}
     </p>
   </ng-container>

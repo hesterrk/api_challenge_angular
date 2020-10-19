@@ -17,6 +17,7 @@ import * as moment from 'moment';
 export class ResultListComponent implements OnInit {
   @ViewChild('agGrid')
   public agGrid: AgGridAngular;
+  public color: string = '#a8c0ff';
 
   public portfolio: any;
   public task: any;

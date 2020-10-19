@@ -33,17 +33,21 @@
   </ng-container> -->
 
   <h4>Documents for Site 1:</h4>
-  <ng-container *ngFor="let d of portfolioDocuments1[0]">
-    <p class="pointer" [appHighlight]="color" (click)="getTasksForDoc(d.id)">
-      <b>Document </b> : {{ d.name }}
-    </p>
+  <ng-container *ngIf="portfolioDocuments1">
+    <div *ngFor="let d of portfolioDocuments1[0]">
+      <p class="pointer" [appHighlight]="color" (click)="getTasksForDoc(d.id)">
+        <b>Document </b> : {{ d.name }}
+      </p>
+    </div>
   </ng-container>
 
   <h4>Documents for Site 2:</h4>
-  <ng-container *ngFor="let d of portfolioDocuments2[0]">
-    <p class="pointer" [appHighlight]="color" (click)="getTasksForDoc(d.id)">
-      <b>Document </b> : {{ d.name }}
-    </p>
+  <ng-container *ngIf="portfolioDocuments2">
+    <div *ngFor="let d of portfolioDocuments2[0]">
+      <p class="pointer" [appHighlight]="color" (click)="getTasksForDoc(d.id)">
+        <b>Document </b> : {{ d.name }}
+      </p>
+    </div>
   </ng-container>
 
   <p><b>Task(s) Subject for Document: </b> {{ showTaskSubject }}</p>
@@ -52,7 +56,7 @@
   <p><b>Document Task Count: </b>{{ taskForDocument?.length }}</p>
 
   <div>
-    <p><b>Total Task Count across Documents </b> : {{ task?.tasks.length }}</p>
+    <p><b>Total Tasks for Site 2 </b> : {{ task?.tasks.length }}</p>
   </div>
 </div>
 

@@ -154,27 +154,32 @@ export class ResultListComponent implements OnInit {
     );
 
     // Todo -> type in and search for tasks and the associated document comes up (the document that has that task that you typed in)
-
-    // Access -> document id will be [0] and name will be [1]
-    // nested arrays in an array
     const documentNameAndId = this.portfolio.sites[0].projects[0].documents.map(
-      (doc) => {
-        return Object.values(doc).slice(0, 2);
+      ({ id, name }) => {
+        return { id, name };
       }
     );
-    console.log(documentNameAndId);
-
-    //one array with strings of task.documentId
-    const taskDocumentId = this.task.tasks.map((t) => t.documentId);
-    // console.log(taskDocumentId);
-
-    // 1. where task.documentId's match with document's id
-    const taskMatchDocument = documentNameAndId.map((subArr) => {
-      return taskDocumentId.filter(t => { return t == subArr[0] })
-      
+    // console.log(documentNameAndId, 'doc name and id');
+    
+    // Getting the documentId and subject properties out of task array of objects
+    const subjectAndId = this.task.tasks.map(({ documentId, subject }) => {
+      return { documentId, subject };
     });
 
-    console.log(taskMatchDocument);
+    // Search for tasks
+    const searchTask = subjectAndId.filter((task) => {
+      return task.subject.toLowerCase().includes(term.toLowerCase());
+    });
+    // console.log(searchTask, 'here');
+
+    const showDocName = searchTask.map(({ documentId }) => {
+      return documentNameAndId.map((doc) => {
+        if (doc.id == documentId) {
+          return doc.name
+        }
+      });
+    });
+    console.log(showDocName);
   }
 
   // Show task for each document

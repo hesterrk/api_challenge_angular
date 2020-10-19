@@ -21,14 +21,8 @@
 
 .pointer {
   cursor: pointer;
-  background-color: powderblue;
-  transition: background-color .5s;
+
   border-radius: 5px;
   width: 25%;
   padding: .2rem 5rem
-}
-
-.pointer :hover {
-  background-color: gold;
-
 }

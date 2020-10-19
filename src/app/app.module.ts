@@ -13,6 +13,7 @@ import { AgGridModule } from 'ag-grid-angular';
 import 'ag-grid-enterprise';
 import { CustomisedCellComponent } from './customised-cell/customised-cell.component';
 import { ActioncustomComponent } from './actioncustom/actioncustom.component';
+import { HighlightDirective } from './highlight.directive';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { ActioncustomComponent } from './actioncustom/actioncustom.component';
     ResultListComponent,
     CustomisedCellComponent,
     ActioncustomComponent,
+    HighlightDirective,
   ],
   imports: [
     BrowserModule,

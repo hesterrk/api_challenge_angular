@@ -21,6 +21,7 @@ export class ResultListComponent implements OnInit {
 
   public portfolio: any;
   public task: any;
+  public portfolioProjects: any;
   public columnDefs;
 
   public defaultColDef = {
@@ -133,6 +134,12 @@ export class ResultListComponent implements OnInit {
   private getPortfolio(): void {
     this.portfolioService.getPortfolio().subscribe((res) => {
       this.portfolio = res.Result;
+      this.portfolioProjects = this.portfolio.sites.map((site) => {
+        return site.projects.map((proj) => {
+          return proj.name;
+        });
+      });
+      console.log(this.portfolioProjects);
     });
   }
 
@@ -145,6 +152,7 @@ export class ResultListComponent implements OnInit {
       site.name.toLowerCase().includes(term.toLowerCase())
     );
 
+    // SEARCH ALL PROJECTS
     this.projectSearchResult = this.portfolio.sites[0].projects.filter(
       (project) => project.name.toLowerCase().includes(term.toLowerCase())
     );

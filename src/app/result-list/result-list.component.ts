@@ -139,7 +139,6 @@ export class ResultListComponent implements OnInit {
           return proj.name;
         });
       });
-      console.log(this.portfolioProjects);
     });
   }
 
@@ -152,10 +151,9 @@ export class ResultListComponent implements OnInit {
       site.name.toLowerCase().includes(term.toLowerCase())
     );
 
-    // SEARCH ALL PROJECTS
-    this.projectSearchResult = this.portfolio.sites[0].projects.filter(
-      (project) => project.name.toLowerCase().includes(term.toLowerCase())
-    );
+    this.projectSearchResult = this.portfolioProjects.filter((project) => {
+      return project[0].toLowerCase().includes(term.toLowerCase());
+    });
 
     this.documentSearchResult = this.portfolio.sites[0].projects[0].documents.filter(
       (document) => document.name.toLowerCase().includes(term.toLowerCase())

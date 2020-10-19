@@ -153,15 +153,13 @@ export class ResultListComponent implements OnInit {
       (document) => document.name.toLowerCase().includes(term.toLowerCase())
     );
 
-    // Todo -> type in and search for tasks and the associated document comes up (the document that has that task that you typed in)
     const documentNameAndId = this.portfolio.sites[0].projects[0].documents.map(
       ({ id, name }) => {
         return { id, name };
       }
     );
-    // console.log(documentNameAndId, 'doc name and id');
 
-    // Getting the documentId and subject properties out of task array of objects
+    // Get documentId and subject properties out of task data 
     const taskSubjectId = this.task.tasks.map(({ documentId, subject }) => {
       return { documentId, subject };
     });
@@ -170,7 +168,6 @@ export class ResultListComponent implements OnInit {
     const searchTask = taskSubjectId.filter((task) => {
       return task.subject.toLowerCase().includes(term.toLowerCase());
     });
-    // console.log(searchTask, 'here');
 
     const showDocName = searchTask.map(({ documentId }) => {
       return documentNameAndId.map((doc) => {

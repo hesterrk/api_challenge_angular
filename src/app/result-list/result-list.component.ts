@@ -169,17 +169,19 @@ export class ResultListComponent implements OnInit {
       return project[0].toLowerCase().includes(term.toLowerCase());
     });
 
-    // this.documentSearchResult = this.portfolio.sites[0].projects[0].documents.filter(
-    //   (document) => document.name.toLowerCase().includes(term.toLowerCase())
-    // );
-
     // TODO -> search all documents from site 1 and site 2
-    this.documentSearchResult = this.portfolio.sites.map((site) => {
+    const allDocuments = this.portfolio.sites.map((site) => {
       return site.projects.map((proj) => {
         return proj.documents.map((doc) => doc);
       });
     });
-    console.log(this.documentSearchResult, 'hello');
+    // Join both document arrays from each site
+    const joinDocumentArrays = allDocuments[0][0].concat(allDocuments[1][0]);
+
+    this.documentSearchResult = joinDocumentArrays.filter((document) =>
+      document.name.toLowerCase().includes(term.toLowerCase())
+    );
+    console.log(this.documentSearchResult, 'check me');
 
     const documentNameAndId = this.portfolio.sites[1].projects[0].documents.map(
       ({ id, name }) => {

@@ -16,15 +16,15 @@ export class HighlightDirective {
   // Mouse methods
   // HostListener => lets you subscribe to events of the host DOM element (element that hosts the directive)
 
-  @HostListener('mouseenter') onMouseEnter() {
+  @HostListener('mouseenter') onMouseEnter(): void {
     this.highlight(this.highlightColor);
   }
 
-  @HostListener('mouseleave') onMouseLeave() {
+  @HostListener('mouseleave') onMouseLeave(): void {
     this.highlight(null);
   }
 
-  private highlight(color: string) {
+  private highlight(color: string): void {
     this.el.nativeElement.style.backgroundColor = color;
   }
 }

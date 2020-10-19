@@ -162,12 +162,12 @@ export class ResultListComponent implements OnInit {
     // console.log(documentNameAndId, 'doc name and id');
 
     // Getting the documentId and subject properties out of task array of objects
-    const subjectAndId = this.task.tasks.map(({ documentId, subject }) => {
+    const taskSubjectId = this.task.tasks.map(({ documentId, subject }) => {
       return { documentId, subject };
     });
 
     // Search for tasks
-    const searchTask = subjectAndId.filter((task) => {
+    const searchTask = taskSubjectId.filter((task) => {
       return task.subject.toLowerCase().includes(term.toLowerCase());
     });
     // console.log(searchTask, 'here');
@@ -179,14 +179,12 @@ export class ResultListComponent implements OnInit {
         }
       });
     });
-    // console.log(showDocName);
 
     this.documentForTaskSearchResult = showDocName.map((doc) =>
       doc.filter((d) => {
         return d !== undefined;
       })
     );
-    console.log(this.documentForTaskSearchResult);
   }
 
   // Show task for each document

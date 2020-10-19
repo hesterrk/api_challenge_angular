@@ -26,7 +26,21 @@
   </ng-container>
 
   <h3>Documents:</h3>
-  <ng-container *ngFor="let d of portfolio?.sites[0].projects[0].documents">
+  <!-- <ng-container *ngFor="let d of portfolio?.sites[0].projects[0].documents">
+    <p class="pointer" [appHighlight]="color" (click)="getTasksForDoc(d.id)">
+      <b>Document </b> : {{ d.name }}
+    </p>
+  </ng-container> -->
+
+  <h4>Documents for Site 1:</h4>
+  <ng-container *ngFor="let d of portfolioDocuments1[0]">
+    <p class="pointer" [appHighlight]="color" (click)="getTasksForDoc(d.id)">
+      <b>Document </b> : {{ d.name }}
+    </p>
+  </ng-container>
+
+  <h4>Documents for Site 2:</h4>
+  <ng-container *ngFor="let d of portfolioDocuments2[0]">
     <p class="pointer" [appHighlight]="color" (click)="getTasksForDoc(d.id)">
       <b>Document </b> : {{ d.name }}
     </p>
@@ -62,11 +76,11 @@
     </div>
   </ng-container>
 
-  <ng-container *ngFor="let d of documentSearchResult">
+  <!-- <ng-container *ngFor="let d of documentSearchResult">
     <div>
       <p>{{ d.name }}</p>
     </div>
-  </ng-container>
+  </ng-container> -->
 
   <ng-container *ngFor="let d of documentForTaskSearchResult">
     <div>

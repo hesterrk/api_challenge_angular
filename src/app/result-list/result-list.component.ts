@@ -22,6 +22,8 @@ export class ResultListComponent implements OnInit {
   public portfolio: any;
   public task: any;
   public portfolioProjects: any;
+  public portfolioDocuments1: any;
+  public portfolioDocuments2: any;
   public columnDefs;
 
   public defaultColDef = {
@@ -139,6 +141,18 @@ export class ResultListComponent implements OnInit {
           return proj.name;
         });
       });
+      const documentsForSites = this.portfolio.sites.map((site) => {
+        return site.projects.map((proj) => {
+          return proj.documents.map((doc) => doc);
+        });
+      });
+
+      this.portfolioDocuments1 = documentsForSites[0].map((doc) => {
+        return doc.map((d) => d);
+      });
+      this.portfolioDocuments2 = documentsForSites[1].map((doc) => {
+        return doc.map((d) => d);
+      });
     });
   }
 
@@ -155,9 +169,17 @@ export class ResultListComponent implements OnInit {
       return project[0].toLowerCase().includes(term.toLowerCase());
     });
 
-    this.documentSearchResult = this.portfolio.sites[0].projects[0].documents.filter(
-      (document) => document.name.toLowerCase().includes(term.toLowerCase())
-    );
+    // this.documentSearchResult = this.portfolio.sites[0].projects[0].documents.filter(
+    //   (document) => document.name.toLowerCase().includes(term.toLowerCase())
+    // );
+
+    // TODO -> get all documents
+    this.documentSearchResult = this.portfolio.sites.map((site) => {
+      return site.projects.map((proj) => {
+        return proj.documents.map((doc) => console.log(doc));
+      });
+    });
+    // console.log(this.documentForTaskSearchResult);
 
     const documentNameAndId = this.portfolio.sites[0].projects[0].documents.map(
       ({ id, name }) => {

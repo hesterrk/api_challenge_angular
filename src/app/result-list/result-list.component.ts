@@ -17,7 +17,7 @@ import * as moment from 'moment';
 export class ResultListComponent implements OnInit {
   @ViewChild('agGrid')
   public agGrid: AgGridAngular;
-  public color: string = '#a8c0ff';
+  public color = '#a8c0ff';
 
   public portfolio: any;
   public task: any;
@@ -173,15 +173,15 @@ export class ResultListComponent implements OnInit {
     //   (document) => document.name.toLowerCase().includes(term.toLowerCase())
     // );
 
-    // TODO -> get all documents
+    // TODO -> search all documents from site 1 and site 2
     this.documentSearchResult = this.portfolio.sites.map((site) => {
       return site.projects.map((proj) => {
-        return proj.documents.map((doc) => console.log(doc));
+        return proj.documents.map((doc) => doc);
       });
     });
-    // console.log(this.documentForTaskSearchResult);
+    console.log(this.documentSearchResult, 'hello');
 
-    const documentNameAndId = this.portfolio.sites[0].projects[0].documents.map(
+    const documentNameAndId = this.portfolio.sites[1].projects[0].documents.map(
       ({ id, name }) => {
         return { id, name };
       }

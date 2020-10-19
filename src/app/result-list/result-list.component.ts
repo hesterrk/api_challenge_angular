@@ -63,7 +63,6 @@ export class ResultListComponent implements OnInit {
     private taskService: TaskService
   ) {
     this.searchPortfolio = _.debounce(this.searchPortfolio, 1000);
-    this.getTasksForDoc;
   }
 
   // cellRenderer: customises the contents inside cell -> do this via just plain JS component or a framework component (using Angular)
@@ -159,7 +158,7 @@ export class ResultListComponent implements OnInit {
       }
     );
 
-    // Get documentId and subject properties out of task data 
+    // Get documentId and subject properties out of task data
     const taskSubjectId = this.task.tasks.map(({ documentId, subject }) => {
       return { documentId, subject };
     });
@@ -171,7 +170,7 @@ export class ResultListComponent implements OnInit {
 
     const showDocName = searchTask.map(({ documentId }) => {
       return documentNameAndId.map((doc) => {
-        if (doc.id == documentId) {
+        if (doc.id === documentId) {
           return doc.name;
         }
       });

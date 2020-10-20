@@ -4,6 +4,7 @@ import { Directive, ElementRef, HostListener, Input } from '@angular/core';
   selector: '[appHighlight]',
 })
 export class HighlightDirective {
+  // appHighlight is alias 
   @Input('appHighlight') highlightColor: string;
 
   // elementRef refers to the host element that we apply this attribute directive too -> a wrapper

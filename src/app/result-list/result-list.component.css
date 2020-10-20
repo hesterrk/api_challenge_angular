@@ -5,9 +5,10 @@
   border: 2px solid lavender;
   width: 50%;
   margin: 0 auto;
-  height: 500px;
+  height: auto;
   margin-bottom: 20;
   margin-top: 20;
+
 }
 
 .container {

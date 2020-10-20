@@ -38,6 +38,9 @@ export class ResultListComponent implements OnInit {
     sortable: true,
     filter: true,
     editable: true,
+    menuTabs: ['columnsMenuTab'],
+    // columnsMenuParams: { suppressSyncLayoutWithGrid: true },
+    suppressMenu: true,
   };
 
   public siteSearchResult: string;
@@ -91,14 +94,19 @@ export class ResultListComponent implements OnInit {
           const restOfLetters = params.value.slice(1);
           return firstLetter + restOfLetters;
         },
+        // columnsMenuParams: {
+        //   contractColumnSelection: true,
+        // },
+        
       },
       {
         field: 'ProjectName',
-        valueFormatter: (params: ValueFormatterParams) => params.value + ' #'
+        valueFormatter: (params: ValueFormatterParams) => params.value + ' #',
       },
       {
         field: 'DocumentName',
-        valueFormatter: (params: ValueFormatterParams) => params.value.toUpperCase()
+        valueFormatter: (params: ValueFormatterParams) =>
+          params.value.toUpperCase(),
       },
       {
         field: 'TaskCount',
@@ -112,29 +120,35 @@ export class ResultListComponent implements OnInit {
       {
         field: 'Cost',
         valueFormatter: (params: ValueFormatterParams) => {
-          const number = Math.floor(params.value).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+          const number = Math.floor(params.value)
+            .toString()
+            .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
           return '£' + number;
-           
-        }
+        },
       },
       {
         field: 'DateCreated',
-        valueFormatter: (params: ValueFormatterParams) => moment(params.value).format('MM/DD/YYYY'),
+        valueFormatter: (params: ValueFormatterParams) =>
+          moment(params.value).format('MM/DD/YYYY'),
       },
       {
         field: 'Revenue',
         valueFormatter: (params: ValueFormatterParams) => {
-          const number = Math.floor(params.value).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
-          return '£' + number
-        }
+          const number = Math.floor(params.value)
+            .toString()
+            .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+          return '£' + number;
+        },
       },
       {
         field: 'Profit',
         valueGetter: (params) => params.data.Revenue - params.data.Cost,
         valueFormatter: (params: ValueFormatterParams) => {
-          const number = Math.floor(params.value).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
-          return '£' + number 
-        }
+          const number = Math.floor(params.value)
+            .toString()
+            .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+          return '£' + number;
+        },
       },
     ];
 

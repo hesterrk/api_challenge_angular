@@ -136,7 +136,7 @@ export class ResultListComponent implements OnInit {
   }
 
   public excludeExtraCols() {
-    this.gridApi.setColumnDefs(this.onlyIncludedCols);
+    this.gridApi.setColumnDefs(this.columnDefs.slice(0, 2));
   }
   public includeExtraCols() {
     this.gridApi.setColumnDefs(this.columnDefs);
@@ -148,8 +148,6 @@ export class ResultListComponent implements OnInit {
     // let cols = params.columnApi.getAllColumns();
     // console.log(cols, 'cols');
   }
-
-  private onlyIncludedCols = [{ field: 'SiteName' }, { field: 'ProjectName' }];
 
   private getPortfolio(): void {
     this.portfolioService.getPortfolio().subscribe((res) => {

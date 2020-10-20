@@ -17,8 +17,8 @@ import * as moment from 'moment';
 export class ResultListComponent implements OnInit {
   @ViewChild('agGrid')
   public agGrid: AgGridAngular;
-  private gridApi;
-  private gridColumnApi;
+  private gridApi: any;
+  private gridColumnApi: any;
   public color = '#a8c0ff';
 
   public portfolio: any;
@@ -26,7 +26,7 @@ export class ResultListComponent implements OnInit {
   public portfolioProjects: any;
   public portfolioDocuments1: any;
   public portfolioDocuments2: any;
-  public columnDefs;
+  public columnDefs: Array<Object>;
   public rowSelection: any;
 
   public defaultColDef = {
@@ -38,8 +38,7 @@ export class ResultListComponent implements OnInit {
   public siteSearchResult: string;
   public projectSearchResult: string;
   public documentSearchResult: string;
-
-  public documentForTaskSearchResult: any;
+  public documentForTaskSearchResult: Array<string>;
 
   public rowData = [
     {

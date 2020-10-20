@@ -3,6 +3,7 @@
 <button (click)="excludeExtraCols()">Exclude Extra Columns</button>
 <button (click)="includeExtraCols()">Include Extra Columns</button>
 <button (click)="addBlankRow()">Add Row</button>
+<button (click)="onDeleteRow()">Delete Selected Row</button>
 
 <ag-grid-angular
   #agGrid
@@ -13,6 +14,7 @@
   [columnDefs]="columnDefs"
   [animateRows]="true"
   (gridReady)="onGridReady($event)"
+  [rowSelection]="rowSelection"
 >
 </ag-grid-angular>
 

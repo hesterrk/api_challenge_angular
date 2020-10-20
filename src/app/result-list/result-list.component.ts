@@ -27,6 +27,7 @@ export class ResultListComponent implements OnInit {
   public portfolioDocuments1: any;
   public portfolioDocuments2: any;
   public columnDefs;
+  public rowSelection: any;
 
   public defaultColDef = {
     sortable: true,
@@ -132,18 +133,20 @@ export class ResultListComponent implements OnInit {
       },
     ];
 
+    this.rowSelection = 'multiple';
+
     this.getPortfolio();
     this.getTask();
   }
 
-  public excludeExtraCols() {
+  public excludeExtraCols(): void {
     this.gridApi.setColumnDefs(this.columnDefs.slice(0, 2));
   }
-  public includeExtraCols() {
+  public includeExtraCols(): void {
     this.gridApi.setColumnDefs(this.columnDefs);
   }
 
-  public addBlankRow() {
+  public addBlankRow(): void {
     this.gridApi.applyTransaction({
       add: [
         {
@@ -161,11 +164,17 @@ export class ResultListComponent implements OnInit {
     });
   }
 
-  public onGridReady(params) {
+  public onDeleteRow(): void {
+    const selectedRowData = this.gridApi.getSelectedRows();
+    console.log(selectedRowData);
+    this.gridApi.applyTransaction({
+      remove: selectedRowData,
+    });
+  }
+
+  public onGridReady(params): void {
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
-    // let cols = params.columnApi.getAllColumns();
-    // console.log(cols, 'cols');
   }
 
   private getPortfolio(): void {

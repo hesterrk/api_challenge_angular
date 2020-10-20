@@ -31,6 +31,7 @@ export class ResultListComponent implements OnInit {
   public defaultColDef = {
     sortable: true,
     filter: true,
+    editable: true,
   };
 
   public siteSearchResult: string;
@@ -140,6 +141,24 @@ export class ResultListComponent implements OnInit {
   }
   public includeExtraCols() {
     this.gridApi.setColumnDefs(this.columnDefs);
+  }
+
+  public addBlankRow() {
+    this.gridApi.applyTransaction({
+      add: [
+        {
+          SiteName: '',
+          ProjectName: '',
+          DocumentName: '',
+          TaskCount: '',
+          Actions: '',
+          Cost: '',
+          DateCreated: '',
+          Revenue: '',
+          Profit: '',
+        },
+      ],
+    });
   }
 
   public onGridReady(params) {

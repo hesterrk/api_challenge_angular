@@ -81,16 +81,16 @@ export class ResultListComponent implements OnInit {
       {
         field: 'SiteName',
         // Slicing first character making uppercase + the rest of string
-        valueFormatter: ({ value }) =>
-          value.slice(0, 1).toUpperCase() + value.slice(1),
+        valueFormatter: (params) =>
+          params.value.slice(0, 1).toUpperCase() + params.value.slice(1),
       },
       {
         field: 'ProjectName',
-        valueFormatter: ({ value }) => value + ' #',
+        valueFormatter: (params) => params.value + ' #',
       },
       {
         field: 'DocumentName',
-        valueFormatter: ({ value }) => value.toUpperCase(),
+        valueFormatter: (params) => params.value.toUpperCase(),
       },
       {
         field: 'TaskCount',
@@ -103,30 +103,30 @@ export class ResultListComponent implements OnInit {
 
       {
         field: 'Cost',
-        valueFormatter: ({ value }) =>
+        valueFormatter: (params) =>
           '£' +
-          Math.floor(value)
+          Math.floor(params.value)
             .toString()
             .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,'),
       },
       {
         field: 'DateCreated',
-        valueFormatter: ({ value }) => moment(value).format('MM/DD/YYYY'),
+        valueFormatter: (params) => moment(params.value).format('MM/DD/YYYY'),
       },
       {
         field: 'Revenue',
-        valueFormatter: ({ value }) =>
+        valueFormatter: (params) =>
           '£' +
-          Math.floor(value)
+          Math.floor(params.value)
             .toString()
             .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,'),
       },
       {
         field: 'Profit',
-        valueGetter: ({ data }) => data.Revenue - data.Cost,
-        valueFormatter: ({ value }) =>
+        valueGetter: (params) => params.data.Revenue - params.data.Cost,
+        valueFormatter: (params) =>
           '£' +
-          Math.floor(value)
+          Math.floor(params.value)
             .toString()
             .replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,'),
       },

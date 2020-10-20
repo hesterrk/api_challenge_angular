@@ -17,6 +17,8 @@ import * as moment from 'moment';
 export class ResultListComponent implements OnInit {
   @ViewChild('agGrid')
   public agGrid: AgGridAngular;
+  private gridApi;
+  private gridColumnApi;
   public color = '#a8c0ff';
 
   public portfolio: any;
@@ -132,6 +134,22 @@ export class ResultListComponent implements OnInit {
     this.getPortfolio();
     this.getTask();
   }
+
+  public excludeExtraCols() {
+    this.gridApi.setColumnDefs(this.onlyIncludedCols);
+  }
+  public includeExtraCols() {
+    this.gridApi.setColumnDefs(this.columnDefs);
+  }
+
+  public onGridReady(params) {
+    this.gridApi = params.api;
+    this.gridColumnApi = params.columnApi;
+    // let cols = params.columnApi.getAllColumns();
+    // console.log(cols, 'cols');
+  }
+
+  private onlyIncludedCols = [{ field: 'SiteName' }, { field: 'ProjectName' }];
 
   private getPortfolio(): void {
     this.portfolioService.getPortfolio().subscribe((res) => {

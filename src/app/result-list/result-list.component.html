@@ -1,5 +1,8 @@
 <h2 class="result-header">Result's List</h2>
 
+<button (click)="excludeExtraCols()">Exclude Extra Columns</button>
+<button (click)="includeExtraCols()">Include Extra Columns</button>
+
 <ag-grid-angular
   #agGrid
   style="width: 1000px; height: 200px"
@@ -8,6 +11,7 @@
   [rowData]="rowData"
   [columnDefs]="columnDefs"
   [animateRows]="true"
+  (gridReady)="onGridReady($event)"
 >
 </ag-grid-angular>
 

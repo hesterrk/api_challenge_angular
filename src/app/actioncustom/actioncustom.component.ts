@@ -1,6 +1,10 @@
 import { Component } from '@angular/core';
 import { ICellRendererAngularComp } from 'ag-grid-angular';
 
+interface ICellEditorParams {
+	value: any;
+}
+
 @Component({
 	selector: 'app-actioncustom',
 	templateUrl: './actioncustom.component.html',
@@ -14,17 +18,16 @@ import { ICellRendererAngularComp } from 'ag-grid-angular';
 export class ActioncustomComponent implements ICellRendererAngularComp {
 	private params: any;
 
-	agInit(params: any): void {
+	agInit(params: ICellEditorParams): void {
 		this.params = params;
 	}
 
-	refresh(params: any): boolean {
+	refresh(params: ICellEditorParams): boolean {
 		this.params = params.value;
 		return true;
 	}
 
 	onClickMe(): void {
 		alert('Clicked');
-    
 	}
 }

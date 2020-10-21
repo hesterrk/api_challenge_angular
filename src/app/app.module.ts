@@ -10,7 +10,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { ResultListComponent } from './result-list/result-list.component';
 
 import { AgGridModule } from 'ag-grid-angular';
-import 'ag-grid-enterprise';
 import { CustomisedCellComponent } from './customised-cell/customised-cell.component';
 import { ActioncustomComponent } from './actioncustom/actioncustom.component';
 import { HighlightDirective } from './highlight.directive';

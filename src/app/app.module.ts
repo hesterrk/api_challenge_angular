@@ -13,6 +13,7 @@ import { AgGridModule } from 'ag-grid-angular';
 import { CustomisedCellComponent } from './customised-cell/customised-cell.component';
 import { ActioncustomComponent } from './actioncustom/actioncustom.component';
 import { HighlightDirective } from './highlight.directive';
+import { ProfitFilterComponent } from './profit-filter/profit-filter.component';
 
 @NgModule({
 	declarations: [
@@ -22,6 +23,7 @@ import { HighlightDirective } from './highlight.directive';
 		CustomisedCellComponent,
 		ActioncustomComponent,
 		HighlightDirective,
+		ProfitFilterComponent,
 	],
 	imports: [
 		BrowserModule,
@@ -31,6 +33,8 @@ import { HighlightDirective } from './highlight.directive';
 		AgGridModule.withComponents([
 			CustomisedCellComponent,
 			ActioncustomComponent,
+			ProfitFilterComponent
+			
 		]),
 	],
 	providers: [],

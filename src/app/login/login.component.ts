@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
 	// Created an instance of user (object)
-	private user = new User('', '');
+	public user = new User('', '');
 
 	constructor(private authService: AuthService, private router: Router) {}
 

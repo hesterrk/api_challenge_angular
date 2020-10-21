@@ -5,6 +5,7 @@ import { PortfolioService } from '../portfolio.service';
 import { TaskService } from '../task.service';
 import { CustomisedCellComponent } from '../customised-cell/customised-cell.component';
 import { ActioncustomComponent } from '../actioncustom/actioncustom.component';
+import { ProfitFilterComponent } from '../profit-filter/profit-filter.component';
 import * as _ from 'underscore';
 import * as moment from 'moment';
 
@@ -90,6 +91,7 @@ export class ResultListComponent implements OnInit {
 					const restOfLetters = params.value.slice(1);
 					return firstLetter + restOfLetters;
 				},
+
 			},
 			{
 				field: 'ProjectName',
@@ -125,6 +127,7 @@ export class ResultListComponent implements OnInit {
 					const num = Math.floor(params.value).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
 					return '£' + num;
 				},
+				
 			},
 			{
 				field: 'Profit',
@@ -133,6 +136,9 @@ export class ResultListComponent implements OnInit {
 					const num = Math.floor(params.value).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
 					return '£' + num;
 				},
+				// filter: ProfitFilterComponent,
+				// [enableFilter]="true" 
+
 			},
 		];
 

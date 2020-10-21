@@ -31,7 +31,7 @@ export class ResultListComponent implements OnInit {
   public portfolioProjects: any;
   public portfolioDocuments1: any;
   public portfolioDocuments2: any;
-  public columnDefs: Array<Object>;
+  public columnDefs: Array<object>;
   public rowSelection: any;
 
 
@@ -40,7 +40,6 @@ export class ResultListComponent implements OnInit {
     filter: true,
     editable: true,
   };
-
 
   public siteSearchResult: string;
   public projectSearchResult: string;
@@ -114,8 +113,8 @@ export class ResultListComponent implements OnInit {
       {
         field: 'Cost',
         valueFormatter: (params: ValueFormatterParams) => {
-          const number = Math.floor(params.value).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
-          return '£' + number;
+          const num = Math.floor(params.value).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+          return '£' + num;
         },
       },
       {
@@ -125,19 +124,20 @@ export class ResultListComponent implements OnInit {
       {
         field: 'Revenue',
         valueFormatter: (params: ValueFormatterParams) => {
-          const number = Math.floor(params.value).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
-          return '£' + number;
+          const num = Math.floor(params.value).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+          return '£' + num;
         },
       },
       {
         field: 'Profit',
         valueGetter: (params) => params.data.Revenue - params.data.Cost,
         valueFormatter: (params: ValueFormatterParams) => {
-          const number = Math.floor(params.value).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
-          return '£' + number;
+          const num = Math.floor(params.value).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
+          return '£' + num;
         },
       },
     ];
+
 
     this.rowSelection = 'multiple';
 

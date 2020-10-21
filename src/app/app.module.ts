@@ -15,26 +15,26 @@ import { ActioncustomComponent } from './actioncustom/actioncustom.component';
 import { HighlightDirective } from './highlight.directive';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    LoginComponent,
-    ResultListComponent,
-    CustomisedCellComponent,
-    ActioncustomComponent,
-    HighlightDirective,
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    HttpClientModule,
-    AgGridModule.withComponents([
-      CustomisedCellComponent,
-      ActioncustomComponent,
-    ]),
-  ],
-  providers: [],
+	declarations: [
+		AppComponent,
+		LoginComponent,
+		ResultListComponent,
+		CustomisedCellComponent,
+		ActioncustomComponent,
+		HighlightDirective,
+	],
+	imports: [
+		BrowserModule,
+		AppRoutingModule,
+		FormsModule,
+		HttpClientModule,
+		AgGridModule.withComponents([
+			CustomisedCellComponent,
+			ActioncustomComponent,
+		]),
+	],
+	providers: [],
 
-  bootstrap: [AppComponent],
+	bootstrap: [AppComponent],
 })
 export class AppModule {}

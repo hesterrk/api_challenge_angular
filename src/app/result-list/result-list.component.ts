@@ -35,7 +35,7 @@ export class ResultListComponent implements OnInit {
 
 	public defaultColDef = {
 		sortable: true,
-		// filter: true,
+		filter: true,
 		editable: true,
 	};
 

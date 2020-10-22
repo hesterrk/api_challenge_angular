@@ -36,7 +36,7 @@ export class ResultListComponent implements OnInit {
 
 	public defaultColDef = {
 		sortable: true,
-		filter: true,
+		// filter: true,
 		editable: true,
 	};
 
@@ -136,9 +136,7 @@ export class ResultListComponent implements OnInit {
 					const num = Math.floor(params.value).toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,');
 					return '£' + num;
 				},
-				// filter: ProfitFilterComponent,
-				// [enableFilter]="true" 
-
+				filterFramework: ProfitFilterComponent,
 			},
 		];
 

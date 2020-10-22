@@ -26,6 +26,7 @@
     "ag-grid-community": "^24.0.0",
     "ag-grid-enterprise": "^24.1.0",
     "moment": "^2.29.1",
+    "photo-sphere-viewer": "^3.6.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "underscore": "^1.11.0",

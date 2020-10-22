@@ -1,5 +1,10 @@
 import { Component, ViewChild, AfterViewInit } from '@angular/core';
 
+interface IDoesFilterPassParams {
+	node: any;
+	data: any;
+}
+
 @Component({
 	selector: 'app-profit-filter',
 	templateUrl: './profit-filter.component.html',
@@ -35,7 +40,7 @@ export class ProfitFilterComponent implements AfterViewInit {
 	// Function that does the filter check based on ranges provided
 	// Gets called by ag-grid -> determines whether a value passes the current filtering condition
 
-	public doesFilterPass(params: any): boolean {
+	public doesFilterPass(params: IDoesFilterPassParams): boolean {
 		// Split the string input based on between sign '-'
 		const filter = this.filter.split('-');
 		const greaterThan = Number(filter[0]);
@@ -53,7 +58,9 @@ export class ProfitFilterComponent implements AfterViewInit {
 		};
 	}
 
-	public setModel(model): void {
+	// Restores the filter state
+	// ag-grid will pass undefined/null to clear the filter
+	public setModel(model: any): void {
 		this.filter = model ? model.filter : '';
 	}
   
@@ -66,8 +73,10 @@ export class ProfitFilterComponent implements AfterViewInit {
 		if (this.filter !== userInput) {
 			this.filter = userInput;
 
-			// Let ag-grid know about the update in state too
+			// Let ag-grid know about the update in state too -> gets called wheneever the filter changes
+			// ag-grid responds by filtering the grid
 			// Method called filterChangedCallback() -> provided via agInit
+			
 			this.params.filterChangedCallback();
 		}
 
